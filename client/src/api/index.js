@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://memories-site.onrender.com:8001",
+  baseURL: "https://memories-site.onrender.com",
 });
 
 // for each request, if a user is signed in, add their token to req.headers so the backend can access it
