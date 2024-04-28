@@ -1,4 +1,10 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
+
+const commentSchema = mongoose.Schema({
+  message: String,
+  creator: String,
+  name: String,
+});
 
 const postSchema = mongoose.Schema({
   title: String,
@@ -9,14 +15,15 @@ const postSchema = mongoose.Schema({
   selectedFile: String,
   likes: {
     type: [String],
-    default: []
+    default: [],
   },
   createdAt: {
     type: Date,
-    default: new Date()
+    default: new Date(),
   },
-})
+  comments: [commentSchema],
+});
 
-const PostMessage = mongoose.model('PostMessage', postSchema);
+const PostMessage = mongoose.model("PostMessage", postSchema);
 
 export default PostMessage;

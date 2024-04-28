@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://memories-site.onrender.com",
+  baseURL: "http://localhost:8080",
 });
 
 // for each request, if a user is signed in, add their token to req.headers so the backend can access it
@@ -17,6 +17,10 @@ export const fetchPosts = () => {
   return API.get("/posts");
 };
 
+export const fetchPost = (id) => {
+  return API.get(`/posts/${id}`);
+};
+
 export const createPost = (newPost) => {
   return API.post("/posts", newPost);
 };
@@ -30,6 +34,11 @@ export const deletePost = (id) => {
 
 export const likePost = (currentId) => {
   return API.patch(`/posts/${currentId}/like`);
+};
+
+// currentId is postId
+export const createComment = (currentId, comment) => {
+  return API.patch(`/posts/${currentId}/comment`, comment);
 };
 
 export const logIn = (formData) => {
